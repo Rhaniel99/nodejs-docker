@@ -1,0 +1,8 @@
+services:
+  node-web-app:
+    build: .
+    ports:
+      - "8001:8080"
+    volumes:
+      - .:/app
+    command: ["nodemon", "server.js"]
