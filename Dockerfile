@@ -4,7 +4,14 @@ WORKDIR /app
 
 COPY package*.json ./
 
-RUN npm install && npm install -g nodemon && npm install express
+# Mude temporariamente para o usuário root
+USER root
+
+# Execute o npm install com permissões de root
+RUN npm install && npm install -g nodemon
+
+# Volte para o usuário não privilegiado
+USER node
 
 COPY . .
 
